@@ -1,0 +1,29 @@
+version: '2'
+networks:
+   default:    
+        external:
+          name: my-network 
+services:
+    web:
+        container_name: flaskapp
+        build:
+          context: /docker-projects
+          dockerfile: Dockerfile
+        networks:
+            default:
+                ipv4_address: 172.16.1.10
+        ports:
+          - "8080:8080"
+        restart: always
+        depends_on:
+          - db
+    db:
+        container_name: appdb
+        restart: always
+        image: vel123/mysql_db:2.0
+        networks:
+             default:
+                ipv4_address: 172.16.1.2
+        ports:
+          - "3306:3306"
+        restart: always
