@@ -1,22 +1,19 @@
 version: '2'
 networks:
-    my-network:
-      driver: bridge
-      ipam:
-        config:
-        - subnet: 172.16.0.0/16
-        
+   default:    
+        external:
+          name: my-network 
 services:
     web:
         container_name: flaskapp
         build:
-          context: /root/Docker-Projects
+          context: /docker-projects
           dockerfile: Dockerfile
         networks:
-            my-network:
+            default:
                 ipv4_address: 172.16.1.10
         ports:
-          - "80:8080"
+          - "8080:8080"
         restart: always
         depends_on:
           - db
@@ -25,7 +22,7 @@ services:
         restart: always
         image: vel123/mysql_db:2.0
         networks:
-             my-network:
+             default:
                 ipv4_address: 172.16.1.2
         ports:
           - "3306:3306"
