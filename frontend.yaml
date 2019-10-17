@@ -1,5 +1,5 @@
 apiVersion: extensions/v1beta1
-kind: deployment
+kind: Deployment
 metadata:
   labels:
     app: frontend
@@ -7,14 +7,14 @@ metadata:
   name: frontend
 spec:
   replicas: 1
-  selector: 
-    matchLables:
+  selector:
+    matchLabels:
       app: frontend
   template:
    metadata:
-    Labels: 
+    labels:
       app: frontend
-   spec: 
+   spec:
     containers:
-    - image: 172.31.15.193:5000/myvel123/flask:2
-    name: frontend
+    - image: 172.31.15.193:5000/myvel123/flask:3
+      name: frontend
