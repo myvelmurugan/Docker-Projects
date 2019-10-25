@@ -16,5 +16,5 @@ spec:
       app: frontend
    spec:
     containers:
-    - image: 172.31.15.193:5000/myvel123/flask:19
+    - image: 172.31.15.193:5000/myvel123/flask:20
       name: frontend
