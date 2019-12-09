@@ -52,7 +52,7 @@ pipeline {
       }
     }
     
-    stage('Push Image') {
+    stage('Push mysql Image') {
       steps{
         script {
           docker.withRegistry( "" ) {
