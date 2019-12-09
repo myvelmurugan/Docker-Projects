@@ -2,6 +2,7 @@ pipeline {
 
   environment {
     registry = "172.31.15.193:5000/myvel123/flask"
+    registry_mysql = "172.31.15.193:5000/myvel123/mysql"
     dockerImage = ""
   }
 
@@ -22,7 +23,13 @@ pipeline {
         }
       }
     }
-
+    
+     stage('current directory') {
+      steps{
+         sh 'pwd'
+      }
+    }
+    
     stage('Push Image') {
       steps{
         script {
