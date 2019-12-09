@@ -19,7 +19,7 @@ spec:
     containers:
     - image: 172.31.15.193:5000/myvel123/flask:${BUILD_NUMBER}
       name: frontend
-      
+      command:  --default-authentication-plugin=mysql_native_password
 --- 
 apiVersion: apps/v1
 kind: Deployment
