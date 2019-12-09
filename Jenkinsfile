@@ -26,9 +26,21 @@ pipeline {
     
      stage('current directory') {
       steps{
-         sh 'pwd'
+         dir("${env.WORKSPACE}/mysql"){
+           sh "pwd"
+           }
       }
     }
+    
+    
+    stage('Build mysql image') {
+      steps{
+        script {
+          dockerImage = docker.build registry_mysql + ":$BUILD_NUMBER"
+        }
+      }
+    }
+       
     
     stage('Push Image') {
       steps{
