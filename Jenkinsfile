@@ -24,6 +24,17 @@ pipeline {
       }
     }
     
+     stage('Push Image') {
+      steps{
+        script {
+          docker.withRegistry( "" ) {
+            dockerImage.push()
+          }
+        }
+      }
+    }
+
+    
      stage('current directory') {
       steps{
          dir("${env.WORKSPACE}/mysql"){
@@ -40,9 +51,8 @@ pipeline {
         }
       }
     }
-       
     
-    stage('Push Image') {
+         stage('Push Image') {
       steps{
         script {
           docker.withRegistry( "" ) {
@@ -50,7 +60,8 @@ pipeline {
           }
         }
       }
-    }
+    }   
+    
 
     stage('Deploy App') {
       steps {
