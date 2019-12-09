@@ -46,7 +46,7 @@ pipeline {
     
     stage('Build mysql image') {
       steps{
-        sh 'docker build -t "172.31.15.193:5000/myvel123/mysql:$BUILD_NUMBER" /home/jenkins/agent/workspace/Docker-Projects_master/mysql/DockerFile'
+        sh 'docker build -t "172.31.15.193:5000/myvel123/mysql:$BUILD_NUMBER" /home/jenkins/agent/workspace/Docker-Projects_master/mysql/'
         sh 'docker push "172.31.15.193:5000/myvel123/mysql:$BUILD_NUMBER"' 
         }
       }
