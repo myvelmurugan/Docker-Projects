@@ -46,21 +46,12 @@ pipeline {
     
     stage('Build mysql image') {
       steps{
-        script {
-          dockerImage = docker.build registry_mysql + ":$BUILD_NUMBER"
+        sh docker build -t "172.31.15.193:5000/myvel123/mysql:$BUILD_NUMBER" -f "${env.WORKSPACE}/mysql/DockerFile"
+        sh docker push "172.31.15.193:5000/myvel123/mysql:$BUILD_NUMBER" 
         }
       }
     }
     
-    stage('Push mysql Image') {
-      steps{
-        script {
-          docker.withRegistry( "" ) {
-            dockerImage.push()
-          }
-        }
-      }
-    }   
     
 
     stage('Deploy App') {
