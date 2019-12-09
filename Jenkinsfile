@@ -50,7 +50,7 @@ pipeline {
         sh docker push "172.31.15.193:5000/myvel123/mysql:$BUILD_NUMBER" 
         }
       }
-    }
+    
     
     
 
