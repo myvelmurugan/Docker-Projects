@@ -24,7 +24,7 @@ pipeline {
       }
     }
     
-     stage('Push Image') {
+    stage('Push Image') {
       steps{
         script {
           docker.withRegistry( "" ) {
@@ -35,7 +35,7 @@ pipeline {
     }
 
     
-     stage('current directory') {
+    stage('current directory') {
       steps{
          dir("${env.WORKSPACE}/mysql"){
            sh "pwd"
@@ -52,7 +52,7 @@ pipeline {
       }
     }
     
-         stage('Push Image') {
+    stage('Push Image') {
       steps{
         script {
           docker.withRegistry( "" ) {
@@ -71,6 +71,6 @@ pipeline {
       }
     }
 
-  }
+  
 
 }
